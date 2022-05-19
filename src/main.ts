@@ -8,9 +8,9 @@ import { HttpExceptionFilter } from '@internal/core/http-exception-filter/http-e
 import { ValidationPipe } from '@nestjs/common';
 import helmet from "helmet";
 
-moduleAlias.addAlias("@internal/shared", path.resolve(__dirname, "./shared"));
-moduleAlias.addAlias("@internal/core", path.resolve(__dirname, "./core"));
-moduleAlias.addAlias("@internal/database", path.resolve(__dirname, "./database"));
+moduleAlias.addAlias("@internal/shared", path.resolve(__dirname, "../shared"));
+moduleAlias.addAlias("@internal/core", path.resolve(__dirname, "../core"));
+moduleAlias.addAlias("@internal/database", path.resolve(__dirname, "../database"));
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

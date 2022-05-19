@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from '@nestjs/mongoose';
 import { CustomModel } from 'mongoose';
 import { Role, RoleDocument } from "@internal/database/schemas/role.schema";
-import { BaseService } from "src/database/base.service";
+import { BaseService } from "@internal/database/base.service";
 
 @Injectable()
 export class RoleService extends BaseService<RoleDocument>{

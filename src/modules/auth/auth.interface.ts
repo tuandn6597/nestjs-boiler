@@ -5,7 +5,7 @@ import {
 	IsString,
 } from "class-validator";
 import { Exclude, Expose } from "class-transformer";
-import { TOKEN_TYPE } from "../../shared/enums/system.enum";
+import { TOKEN_TYPE } from "@internal/shared/enums/system.enum";
 
 type TokenMap<T extends JWTPayload> = {
 	[k in TOKEN_TYPE]: Constructor<T>;

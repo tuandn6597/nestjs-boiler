@@ -3,12 +3,12 @@ import { JwtModule, JwtModuleOptions } from "@nestjs/jwt";
 import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./jwt.strategy";
 import { PassportModule } from "@nestjs/passport";
-import { EnvironmentModule } from "src/core/environment/environment.module";
-import { EnvironmentService } from "src/core/environment/environment.service";
+import { EnvironmentModule } from "@internal/core/environment/environment.module";
+import { EnvironmentService } from "@internal/core/environment/environment.service";
 import { UserModule } from "../user/user.module";
 import { RoleModule } from "../role/role.module";
 import { AuthController } from "./auth.controller";
-import { CryptoModule } from "src/core/crypto/crypto.module";
+import { CryptoModule } from "@internal/core/crypto/crypto.module";
 
 @Global()
 @Module({

@@ -1,6 +1,5 @@
 import { Controller, Post, Body, UseGuards, Get, Delete, Patch, Param } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { PermissionsGuard } from "src/modules/auth/permissions/permissions.guard";
 import { CreateRoleBodyDto, CreateRoleRequestDto, CreateRoleResponseDto } from "@internal/shared/dtos/role/create-role.dto";
 import { DeleteRoleRequestDto } from "@internal/shared/dtos/role/delete-role.dto";
 import { GetRoleRequestDto } from "@internal/shared/dtos/role/get-role.dto";
@@ -11,6 +10,7 @@ import { RequiresPermission } from "../auth/permissions/permissions.decorator";
 import { RoleService } from "./role.service";
 import { Pagination } from "@internal/core/decorator/pagination.decorator";
 import { PaginationParams } from "mongoose";
+import { PermissionsGuard } from "../auth/permissions/permissions.guard";
 
 @Controller()
 @ApiTags('roles')

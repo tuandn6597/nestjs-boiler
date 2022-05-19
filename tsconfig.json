@@ -4,7 +4,7 @@
     "paths": {
 			"*": ["./node_modules/*"],
 			"src/*": ["./src/*"],
-			"@internal/*": ["./src/*"]
+			"@internal/*": ["./*"]
 		},
     "module": "commonjs",
     "declaration": true,

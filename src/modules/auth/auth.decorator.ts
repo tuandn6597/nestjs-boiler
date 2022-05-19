@@ -1,5 +1,5 @@
 import { createParamDecorator, ExecutionContext, ForbiddenException, InternalServerErrorException, UnauthorizedException } from "@nestjs/common";
-import { SYSTEM_MESSAGE } from "src/shared/enums/system.enum";
+import { SYSTEM_MESSAGE } from "@internal/shared/enums/system.enum";
 import { JWTPayload, TOKEN_TYPE_MAP } from "./auth.interface";
 
 function extractToken<T extends JWTPayload>(tokenType: Constructor<T>, jwtPayload: T): T | never {

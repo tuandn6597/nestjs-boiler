@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { EnvironmentModule } from './core/environment/environment.module';
+import { EnvironmentModule } from '@internal/core/environment/environment.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './modules/user/user.module';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
-import { ResponseInterceptor } from './core/interceptor/response.interceptor';
+import { ResponseInterceptor } from '@internal/core/interceptor/response.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { RoleModule } from './modules/role/role.module';
-import { EnvironmentService } from './core/environment/environment.service';
+import { EnvironmentService } from '@internal/core/environment/environment.service';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 @Module({
   imports: [

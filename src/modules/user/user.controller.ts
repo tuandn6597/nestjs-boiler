@@ -1,18 +1,18 @@
 import { Controller, Post, Body, UseGuards, Get, Param, Patch, Delete } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { PaginationParams } from "mongoose";
-import { Pagination } from "src/core/decorator/pagination.decorator";
-import { PermissionsGuard } from "src/modules/auth/permissions/permissions.guard";
-import { CreateUserBodyDto, CreateUserRequestDto, CreateUserResponseDto } from "src/shared/dtos/user/create-user.dto";
-import { DeleteUserRequestDto } from "src/shared/dtos/user/delete.user.dto";
-import { GetUserRequestDto } from "src/shared/dtos/user/get-user.dto";
-import { GetUsersRequestDto } from "src/shared/dtos/user/get-users.dto";
-import { UpdateUserBodyDto, UpdateUserRequestDto } from "src/shared/dtos/user/update-user.dto";
+import { Pagination } from "@internal/core/decorator/pagination.decorator";
+import { CreateUserBodyDto, CreateUserRequestDto, CreateUserResponseDto } from "@internal/shared/dtos/user/create-user.dto";
+import { DeleteUserRequestDto } from "@internal/shared/dtos/user/delete.user.dto";
+import { GetUserRequestDto } from "@internal/shared/dtos/user/get-user.dto";
+import { GetUsersRequestDto } from "@internal/shared/dtos/user/get-users.dto";
+import { UpdateUserBodyDto, UpdateUserRequestDto } from "@internal/shared/dtos/user/update-user.dto";
 import { JWTContent } from "../auth/auth.decorator";
 import { UserJWTPayload } from "../auth/auth.interface";
 import { PermissionAction, PermissionResource } from "@internal/shared/enums/permission.enum";
 import { RequiresPermission } from "../auth/permissions/permissions.decorator";
 import { UserService } from "./user.service";
+import { PermissionsGuard } from "../auth/permissions/permissions.guard";
 
 @Controller()
 @ApiTags('users')

@@ -1,19 +1,19 @@
 import { ForbiddenException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { classToPlain, plainToClass } from "class-transformer";
 import { EnvironmentService } from "@internal/core/environment/environment.service";
-import { SYSTEM_MESSAGE } from "src/shared/enums/system.enum";
+import { SYSTEM_MESSAGE } from "@internal/shared/enums/system.enum";
 import { JWTPayload, TOKEN_TYPE_MAP, UserJWTPayload } from "./auth.interface";
 import { JwtService } from "@nestjs/jwt";
 import { validateOrReject } from "class-validator";
 import { UserService } from "../user/user.service";
 import { RoleService } from "../role/role.service";
-import { RegisterBodyDto, RegisterResponseDto } from "src/shared/dtos/auth/register.dto";
-import { UserExistedException } from "src/core/http-exception-filter/user-exist-exception";
-import { User } from "src/database/schemas/user.schema";
-import { LoginBodyDto, LoginResponseDto } from "src/shared/dtos/auth/login.dto";
-import { ResourceNotFoundException } from "src/core/http-exception-filter/resource-not-found-exception";
-import { CryptoService } from "src/core/crypto/crypto.service";
-import { Profile } from "src/shared/types/profile.type";
+import { RegisterBodyDto, RegisterResponseDto } from "@internal/shared/dtos/auth/register.dto";
+import { UserExistedException } from "@internal/core/http-exception-filter/user-exist-exception";
+import { User } from "@internal/database/schemas/user.schema";
+import { LoginBodyDto, LoginResponseDto } from "@internal/shared/dtos/auth/login.dto";
+import { ResourceNotFoundException } from "@internal/core/http-exception-filter/resource-not-found-exception";
+import { CryptoService } from "@internal/core/crypto/crypto.service";
+import { Profile } from "@internal/shared/types/profile.type";
 
 @Injectable()
 export class AuthService {
