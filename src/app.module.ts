@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { EnvironmentModule } from './core/environment/environment.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './modules/user/user.module';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ResponseInterceptor } from './core/interceptor/response.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { RoleModule } from './modules/role/role.module';
 import { EnvironmentService } from './core/environment/environment.service';
-
+import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 @Module({
   imports: [
     MongooseModule.forRootAsync({
@@ -22,6 +22,14 @@ import { EnvironmentService } from './core/environment/environment.service';
       }),
       inject: [EnvironmentService],
     }),
+    ThrottlerModule.forRootAsync({
+      imports: [EnvironmentModule],
+      useFactory: (envService: EnvironmentService) => ({
+        ttl: envService.ENVIRONMENT.THROTTLE_TTL,
+        limit: envService.ENVIRONMENT.THROTTLE_LIMIT,
+      }),
+      inject: [EnvironmentService],
+    }),
     EnvironmentModule,
     UserModule,
     AuthModule,
@@ -32,6 +40,10 @@ import { EnvironmentService } from './core/environment/environment.service';
     {
       provide: APP_INTERCEPTOR,
       useClass: ResponseInterceptor,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     }
   ],
 })

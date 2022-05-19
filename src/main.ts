@@ -6,6 +6,7 @@ import moduleAlias = require("module-alias");
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { HttpExceptionFilter } from '@internal/core/http-exception-filter/http-exception.filter';
 import { ValidationPipe } from '@nestjs/common';
+import helmet from "helmet";
 
 moduleAlias.addAlias("@internal/shared", path.resolve(__dirname, "./shared"));
 moduleAlias.addAlias("@internal/core", path.resolve(__dirname, "./core"));
@@ -15,9 +16,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const envService = app.get(EnvironmentService);
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new HttpExceptionFilter())
+  app.useGlobalFilters(new HttpExceptionFilter());
   app.setGlobalPrefix('api/v1');
-
+  app.use(helmet());
+  app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Backend Api doc')
     .setDescription('Tuan dep trai')
